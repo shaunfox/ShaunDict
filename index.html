@@ -14,7 +14,7 @@
         <div data-role="header" data-position="fixed">
             <h1>ShaunDict 迷你英汉词典</h1>
         </div>
-        <div role="content">
+        <div role="content" data-inset="true" style="padding: 0 10px; ">
 
 
             <input type="text" id="wordInput" placeholder="请输入英文单词..." data-theme="d">
@@ -24,8 +24,8 @@
             <div id="wordPron">
                 <audio id="wordAudioUK" src="" controls style="display: none;"></audio>
                 <audio id="wordAudioUS" src="" controls style="display: none;"></audio>
-                <a href="####" class="ui-btn ui-icon-audio ui-btn-icon-left ui-btn-inline" id="playUK" style="display: none;"><span id="pronUK"></span></a>
-                <a href="####" class="ui-btn ui-icon-audio ui-btn-icon-left ui-btn-inline" id="playUS" style="display: none;"><span id="pronUS" ></span></a></div>
+                <a href="####" class="ui-btn ui-icon-audio ui-btn-icon-left ui-btn-inline" id="playUK" style="display: none; margin-left: 10px;"><span id="pronUK"></span></a>
+                <a href="####" class="ui-btn ui-icon-audio ui-btn-icon-left ui-btn-inline" id="playUS" style="display: none; margin-left: 10px;"><span id="pronUS" ></span></a></div>
             <ul id="wordOutput" data-role="listview" data-inset="true">
             </ul>
             <ul id="wordSent" data-role="listview" data-inset="true">
