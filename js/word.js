@@ -1,5 +1,5 @@
 var urlpre = "https://crossorigin.me/http://api.shanbay.com/bdc/search/?word=";
- 
+
 var isAjax = false;
 
 $('#submit').on('click', function() {
@@ -21,6 +21,8 @@ $('#submit').on('click', function() {
             $('#wordSent').html('');
             $("#playUS").css("display", "none");
             $("#playUK").css("display", "none");
+
+            $.mobile.loading('hide');
 
         } else {
             var str = "<li>&nbsp</li>" +
@@ -49,52 +51,53 @@ $('#submit').on('click', function() {
 
 $("#wordInput").keydown(function(event) {
     if (event.keyCode == 13) {
-    
-    // 显示loading
-    $.mobile.loading('show');
 
-    // 清空缓存 
-    $('#wordOutput').html('');
-    $('#wordSent').html('');
+        // 显示loading
+        $.mobile.loading('show');
 
-    $("#playUS").css("display", "none");
-    $("#playUK").css("display", "none");
+        // 清空缓存 
+        $('#wordOutput').html('');
+        $('#wordSent').html('');
 
-    // 获取中英文释义
-    $.get(urlpre + $('#wordInput').val(), function(data) {
-        if (data.status_code === 1) {
-            $('#wordOutput').html('<h1>查无此词~</h1>');
-            $('#wordSent').html('');
-            $("#playUS").css("display", "none");
-            $("#playUK").css("display", "none");
+        $("#playUS").css("display", "none");
+        $("#playUK").css("display", "none");
 
-        } else {
-            var str = "<li>&nbsp</li>" +
-                "<li><h3>释义</h3>" + data.data.cn_definition.defn + "</li>" +
-                "<li>&nbsp</li>";
-            // 释义
-            $('#wordOutput').html(str);
-            // 音标
-            $('#pronUK').html('英：[' + data.data.pronunciations.uk + ']');
-            $('#pronUS').html('美：[' + data.data.pronunciations.us + ']');
+        // 获取中英文释义
+        $.get(urlpre + $('#wordInput').val(), function(data) {
+            if (data.status_code === 1) {
+                $('#wordOutput').html('<h1>查无此词~</h1>');
+                $('#wordSent').html('');
+                $("#playUS").css("display", "none");
+                $("#playUK").css("display", "none");
+                $.mobile.loading('hide');
 
-            $("#playUS").css("display", "inline-block");
-            $("#playUK").css("display", "inline-block");
+            } else {
+                var str = "<li>&nbsp</li>" +
+                    "<li><h3>释义</h3>" + data.data.cn_definition.defn + "</li>" +
+                    "<li>&nbsp</li>";
+                // 释义
+                $('#wordOutput').html(str);
+                // 音标
+                $('#pronUK').html('英：[' + data.data.pronunciations.uk + ']');
+                $('#pronUS').html('美：[' + data.data.pronunciations.us + ']');
 
-            // 例句
-            getSent(data.data.id);
-            // 音频资源设置
-            $('#wordAudioUS').attr("src", data.data.us_audio);
-            $('#wordAudioUK').attr("src", data.data.uk_audio);
+                $("#playUS").css("display", "inline-block");
+                $("#playUK").css("display", "inline-block");
 
-            // 显示loading
-            $.mobile.loading('hide');
-        }
-    });
+                // 例句
+                getSent(data.data.id);
+                // 音频资源设置
+                $('#wordAudioUS').attr("src", data.data.us_audio);
+                $('#wordAudioUK').attr("src", data.data.uk_audio);
+
+                // 显示loading
+                $.mobile.loading('hide');
+            }
+        });
     }
 });
 
-function getSent(id) { 
+function getSent(id) {
 
     var urlpre2 = "https://crossorigin.me/http://api.shanbay.com/bdc/example/?vocabulary_id=";
     // 获取例句 
