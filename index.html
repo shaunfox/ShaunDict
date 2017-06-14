@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ShaunDict 迷你英汉词典</title> 
+    <title>ShaunDict || 英汉小词典</title>
     <!-- <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 </head>
@@ -12,15 +12,15 @@
 <body>
     <div data-role="page" id="index">
         <div data-role="header" data-position="fixed">
-            <h1>ShaunDict 迷你英汉词典</h1>
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a data-icon="home" href="http://www.shaun.win" class="">ShaunTea</a></li>
+                    <li><a data-icon="search" href="http://www.shaun.win/dict" class="ui-btn">英汉小词典</a></li>
+                </ul>
+            </div>
         </div>
         <div role="content" data-inset="true" style="padding: 0 10px; ">
-
-
             <input type="text" id="wordInput" placeholder="请输入英文单词..." data-theme="d">
-
-
-
             <div id="wordPron">
                 <audio id="wordAudioUK" src="" controls style="display: none;"></audio>
                 <audio id="wordAudioUS" src="" controls style="display: none;"></audio>
@@ -32,10 +32,10 @@
             </ul>
         </div>
         <div data-role="footer" data-position="fixed">
-            <div data-role="navbar">
+            <div data-role="navbar" data-iconpos="bottom">
                 <ul>
                     <li>
-                        <a href="####" data-icon="search" class="ui-btn ui-btn-b ui-btn-icon-top" id="submit">查询</a>
+                        <a href="####" class="ui-btn ui-btn-b" id="submit">查询</a>
                     </li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
     </div>
     <!-- <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <script src="js/jquery-1.11.0.min.js"></script>
-    <!-- <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> --> 
+    <!-- <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/word.js"></script>
 </body>
